@@ -1,2 +1,7 @@
 <footer class="footer">
-	<small>Lorem ipsum dolor sit amet, consectetur adipiscing elit</small>
+<% if user_signed_in? %>
+	<small>You`re succesfully logged in. <%= link_to 'Logout', destroy_user_session_url, :method => :delete  %></small>
+<% else %>
+	<small>To book your trip you must be <%= link_to 'logged in', new_user_session_url %>. Not registered yet? <%= link_to 'Sign up.', new_user_registration_url%></small>
+
+<% end %>

@@ -1,11 +1,12 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
   	<div class="navbar-inner">
   		<div class="container">
-  			<%= link_to "Buy tickets online", "#", id: "logo" %>
+  			<%= link_to "Buy tickets online", root_url, id: "logo" %>
   			<nav>
   			<ul class="nav pull-right">
-  				<li><%= link_to "Home",		root_path%></li>
-  				<li><%= link_to "Sign in",	'#'%></li>
+  				<li><%= link_to "Home",		root_url%></li>
+          <li><%= link_to "Schedule", trips_url%></li>
+  				<li><%= link_to "Sign in",	new_user_session_url%></li>
   			</ul>
   		    </nav>
   		</div>
