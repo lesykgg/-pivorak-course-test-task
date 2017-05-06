@@ -1,1 +1,1 @@
-#pivorak summer camp test task
+summer camp test task

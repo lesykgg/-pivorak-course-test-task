@@ -3,8 +3,8 @@ class CreateTrips < ActiveRecord::Migration[5.0]
     create_table :trips do |t|
       t.string :from
       t.string :destination
-      t.datetime :timearr
       t.datetime :timedep
+      t.datetime :timearr
       t.string :via
       t.integer :seats
 
