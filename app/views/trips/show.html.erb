@@ -1,2 +1,34 @@
-<h1>Trips#show</h1>
-<p>Find me in app/views/trips/show.html.erb</p>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>From:</strong>
+  <%= @trip.from %>
+</p>
+
+<p>
+  <strong>Destination:</strong>
+  <%= @trip.destination %>
+</p>
+
+<p>
+  <strong>Timedep:</strong>
+  <%= @trip.timedep %>
+</p>
+
+<p>
+  <strong>Timearr:</strong>
+  <%= @trip.timearr %>
+</p>
+
+<p>
+  <strong>Via:</strong>
+  <%= @trip.via %>
+</p>
+
+<p>
+  <strong>Seats:</strong>
+  <%= @trip.seats %>
+</p>
+
+<%= link_to 'Edit', edit_trip_path(@trip) %> |
+<%= link_to 'Back', trips_path %>
