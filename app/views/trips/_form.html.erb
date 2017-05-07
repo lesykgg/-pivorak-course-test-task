@@ -1,5 +1,5 @@
 <%= form_for(trip) do |f| %>
- < <% if trip.errors.any? %>
+ <% if trip.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(trip.errors.count, "error") %> prohibited this trip from being saved:</h2>
 
@@ -12,34 +12,26 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :from %>
-    <%= f.text_field :from %>
-  </div>
-
-  <div class="field">
-    <%= f.label :destination %>
-    <%= f.text_field :destination %>
-  </div>
-
-  <div class="field">
     <%= f.label :timedep %>
     <%= f.datetime_select :timedep %>
-  </div>
-
-  <div class="field">
-    <%= f.label :timearr %>
-    <%= f.datetime_select :timearr %>
-  </div>
-
-  <div class="field">
-    <%= f.label :via %>
-    <%= f.text_field :via %>
   </div>
 
   <div class="field">
     <%= f.label :seats %>
     <%= f.number_field :seats %>
   </div>
+
+  <%= fields_for :destination, trip.destinations.build do |df| %>
+    <div class="field">
+      <%= df.label :point %>
+      <%= df.text_field :point %>
+    </div>
+
+    <div class="field">
+      <%= df.label :timearr %>
+      <%= df.datetime_select :timearr %>
+    </div>
+  <% end %>
 
   <div class="actions">
     <%= f.submit %>

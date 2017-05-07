@@ -5,6 +5,11 @@ class TripsController < ApplicationController
   # GET /trips.json
   def index
     @trips = Trip.all
+    if params[:search] && params[:search2]
+      @trips = Trip.search(params[:search], params[:search2]).order("created_at DESC").to_a
+    else
+      @trips = Trip.all.order('created_at DESC')
+    end
   end
 
   # GET /trips/1
@@ -24,7 +29,9 @@ class TripsController < ApplicationController
   # POST /trips
   # POST /trips.json
   def create
+    # render json: params
     @trip = Trip.new(trip_params)
+    @trip.destinations.build(destination_params)
 
     respond_to do |format|
       if @trip.save
@@ -69,6 +76,10 @@ class TripsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def trip_params
-      params.require(:trip).permit(:from, :destination, :timedep, :timearr, :via, :seats)
+      params.require(:trip).permit(:timedep, :seats)
+    end
+
+    def destination_params
+      params.require(:destination).permit(:point, :timearr)
     end
 end

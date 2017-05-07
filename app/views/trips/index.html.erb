@@ -16,11 +16,11 @@
   <tbody>
     <% @trips.each do |trip| %>
       <tr>
-        <td><%= trip.from %></td>
-        <td><%= trip.destination %></td>
+        <td><%= trip.departure_point %></td>
+        <td><%= trip.ride_destination %></td>
         <td><%= trip.timedep %></td>
-        <td><%= trip.timearr %></td>
-        <td><%= trip.via %></td>
+        <td><%= trip.ride_arrival_time %></td>
+        <td><%= trip.route_points %></td>
         <td><%= trip.seats %></td>
         <td><%= link_to 'Show', trip %></td>
         <% if current_user.try(:admin?) %>
@@ -32,7 +32,7 @@
   </tbody>
 </table>
 <small>* UTC</small>
-
+<%= render 'layouts/tripsearch'%>
 <br>
 <% if current_user.try(:admin?) %>
 <%= link_to 'New Trip', new_trip_path %>
