@@ -31,7 +31,6 @@ class TripsController < ApplicationController
   def create
     # render json: params
     @trip = Trip.new(trip_params)
-    @trip.destinations.build(destination_params)
 
     respond_to do |format|
       if @trip.save
@@ -76,10 +75,7 @@ class TripsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def trip_params
-      params.require(:trip).permit(:timedep, :seats)
+      params.require(:trip).permit(:timedep, :seats, destinations_attributes: [:trip_id, :point, :datearr, :timearr, :_destroy])
     end
 
-    def destination_params
-      params.require(:destination).permit(:point, :datearr, :timearr)
-    end
 end

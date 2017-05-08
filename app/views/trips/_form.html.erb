@@ -21,24 +21,12 @@
     <%= f.number_field :seats %>
   </div>
 
-  <%= fields_for :destination, trip.destinations.build do |df| %>
-    <div class="field">
-      <%= df.label :point %>
-      <%= df.text_field :point %>
-    </div>
-
-    <div class="field">
-      <%= df.label :datearr %>
-      <%= df.date_select :datearr %>
-    </div>
-
-    <div class="field">
-      <%= df.label :timearr %>
-      <%= df.time_select :timearr %>
-    </div>
+  <%= f.fields_for :destinations do |dest| %>
+    <%= render 'destinations_fields', f: dest %>
   <% end %>
 
   <div class="actions">
+  <%= link_to_add_association 'Add route point', f, :destinations, class: "btn btn-primary" %>
     <%= f.submit %>
   </div>
 <% end %>
