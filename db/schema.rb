@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170507151550) do
+ActiveRecord::Schema.define(version: 20170508112438) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bookings", force: :cascade do |t|
+    t.integer  "trip_id"
+    t.string   "name"
+    t.integer  "seat_number"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["trip_id"], name: "index_bookings_on_trip_id", using: :btree
+  end
 
   create_table "destinations", force: :cascade do |t|
     t.integer  "trip_id"
@@ -23,6 +32,15 @@ ActiveRecord::Schema.define(version: 20170507151550) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["trip_id"], name: "index_destinations_on_trip_id", using: :btree
+  end
+
+  create_table "tickets", force: :cascade do |t|
+    t.integer  "trip_id"
+    t.string   "name"
+    t.integer  "seat_num"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["trip_id"], name: "index_tickets_on_trip_id", using: :btree
   end
 
   create_table "trips", force: :cascade do |t|
@@ -48,5 +66,7 @@ ActiveRecord::Schema.define(version: 20170507151550) do
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 
+  add_foreign_key "bookings", "trips"
   add_foreign_key "destinations", "trips"
+  add_foreign_key "tickets", "trips"
 end

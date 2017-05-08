@@ -1,8 +1,9 @@
 class Trip < ApplicationRecord
   has_many :destinations, dependent: :destroy
+  has_many :tickets, dependent: :destroy
+  has_many :bookings, dependent: :destroy
 
   def self.search(search, search2, search3)
-    
     joins(:destinations).where(destinations: { point: search }, destinations: { point: search2 }, destinations: { datearr: search3})
   end
 

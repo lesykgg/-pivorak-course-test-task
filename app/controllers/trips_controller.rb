@@ -5,8 +5,8 @@ class TripsController < ApplicationController
   # GET /trips.json
   def index
     @trips = Trip.all
-    if params[:search] && params[:search2]
-      @trips = Trip.search(params[:search], params[:search2], params[:search3]).order("created_at DESC").to_a
+    if params[:search] && params[:search2] && params[:search3]
+    pp  @trips = Trip.search(params[:search], params[:search2], params[:search3]).order("created_at DESC").to_a
     else
       @trips = Trip.all.order('created_at DESC')
     end
