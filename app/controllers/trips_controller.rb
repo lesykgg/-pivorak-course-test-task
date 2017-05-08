@@ -6,7 +6,7 @@ class TripsController < ApplicationController
   def index
     @trips = Trip.all
     if params[:search] && params[:search2]
-      @trips = Trip.search(params[:search], params[:search2]).order("created_at DESC").to_a
+      @trips = Trip.search(params[:search], params[:search2], params[:search3]).order("created_at DESC").to_a
     else
       @trips = Trip.all.order('created_at DESC')
     end
@@ -80,6 +80,6 @@ class TripsController < ApplicationController
     end
 
     def destination_params
-      params.require(:destination).permit(:point, :timearr)
+      params.require(:destination).permit(:point, :datearr, :timearr)
     end
 end

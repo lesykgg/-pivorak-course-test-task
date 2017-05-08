@@ -16,9 +16,10 @@ ActiveRecord::Schema.define(version: 20170507151550) do
   enable_extension "plpgsql"
 
   create_table "destinations", force: :cascade do |t|
-    t.string   "point"
-    t.datetime "timearr"
     t.integer  "trip_id"
+    t.string   "point"
+    t.date     "datearr"
+    t.time     "timearr"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["trip_id"], name: "index_destinations_on_trip_id", using: :btree

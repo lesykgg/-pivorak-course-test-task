@@ -28,8 +28,13 @@
     </div>
 
     <div class="field">
+      <%= df.label :datearr %>
+      <%= df.date_select :datearr %>
+    </div>
+
+    <div class="field">
       <%= df.label :timearr %>
-      <%= df.datetime_select :timearr %>
+      <%= df.time_select :timearr %>
     </div>
   <% end %>
 

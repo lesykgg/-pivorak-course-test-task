@@ -1,27 +1,29 @@
 class Trip < ApplicationRecord
   has_many :destinations, dependent: :destroy
 
-  def self.search(search, search2)
+  def self.search(search, search2, search3)
     
-    joins(:destinations).where(destinations: { point: search }, destinations: { point: search2 })
+    joins(:destinations).where(destinations: { point: search }, destinations: { point: search2 }, destinations: { datearr: search3})
   end
 
   def route_points
-  	points = destinations.order(:timearr).map(&:point)
+  	points = destinations.order(:datearr || :timearr).map(&:point)
     unless points.length <= 2
     points[1..-2].join(', ')
     end
   end
 
   def departure_point
-    destinations.order(:timearr).first&.point
+    destinations.order(:datearr || :timearr).first&.point
   end
 
   def ride_destination
-  	destinations.order(:timearr).last&.point
+  	destinations.order(:datearr || :timearr).last&.point
   end
 
   def ride_arrival_time
-  	destinations.order(:timearr).last&.timearr
+    d = destinations.order(:datearr || :timearr).last&.datearr
+    t = destinations.order(:datearr || :timearr).last&.timearr
+    dt = DateTime.new(d.year, d.month, d.day, t.hour, t.min, t.sec, "00:00")
   end
 end
