@@ -39,6 +39,10 @@
 			<%= f.number_field :user_id, value: current_user.id, readonly: true  %>
 		</div>
 
+    <div class="field">
+      <%= f.label :booked %>
+      <%= f.check_box :booked %>
+    </div>
 
   <div class="actions">
     <%= f.submit 'Buy ticket', class: 'btn btn-primary' %>

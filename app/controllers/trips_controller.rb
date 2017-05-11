@@ -1,7 +1,6 @@
 class TripsController < ApplicationController
   before_action :set_trip, only: [:show, :edit, :update, :destroy]
-
-
+  
   def index
     Trip.all.each do |t|
       if t.destinations.order(:datearr, :timearr).last.datearr < DateTime.now-1
@@ -73,7 +72,8 @@ class TripsController < ApplicationController
     end
 
     def trip_params
-      params.require(:trip).permit(:timedep, :seats, destinations_attributes: [:trip_id, :point, :datearr, :timearr, :_destroy])
+      params.require(:trip).permit(:timedep, :seats, destinations_attributes: [:trip_id, :point, :datearr,
+                                                                               :timearr, :_destroy])
     end
 
 end
