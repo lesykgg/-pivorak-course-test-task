@@ -30,14 +30,10 @@
 			<%= f.label :seatnum %>
 			<%= f.number_field :seatnum, value: @seat, readonly: true  %>
 		</div>
-		<div class="field">
-			<%= f.label :trip_id %>
-			<%= f.number_field :trip_id, value: @trip, readonly: true  %>
-		</div>
-		<div class="field">
-			<%= f.label :user_id %>
-			<%= f.number_field :user_id, value: current_user.id, readonly: true  %>
-		</div>
+
+    <%= f.hidden_field :user_id, value: current_user.id %>
+
+    <%= f.hidden_field :trip_id, value: @trip.id %>
 
     <div class="field">
       <%= f.label :booked %>

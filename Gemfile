@@ -24,6 +24,7 @@ group :development, :test do
   gem 'capybara'
   gem 'rspec-rails', '~> 3.5'
   gem 'byebug', platform: :mri
+  gem 'awesome_print'
 end
 
 group :development do

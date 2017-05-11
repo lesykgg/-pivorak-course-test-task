@@ -1,32 +1,32 @@
 <%= form_for(trip) do |f| %>
- <% if trip.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(trip.errors.count, "error") %> prohibited this trip from being saved:</h2>
+    <% if trip.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(trip.errors.count, "error") %> prohibited this trip from being saved:</h2>
 
-      <ul>
-      <% trip.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-      <% end %>
-      </ul>
+          <ul>
+            <% trip.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :timedep %>
+      <%= f.datetime_field :timedep %>
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :timedep %>
-    <%= f.datetime_field :timedep %>
-  </div>
+    <div class="field">
+      <%= f.label :seats %>
+      <%= f.number_field :seats %>
+    </div>
 
-  <div class="field">
-    <%= f.label :seats %>
-    <%= f.number_field :seats %>
-  </div>
+    <%= f.fields_for :destinations do |dest| %>
+        <%= render 'destinations_fields', f: dest %>
+    <% end %>
 
-  <%= f.fields_for :destinations do |dest| %>
-    <%= render 'destinations_fields', f: dest %>
-  <% end %>
-
-  <div class="actions">
-    <%= link_to_add_association 'Add route point', f, :destinations, class: "btn btn-primary" %>
-    <%= f.submit 'Create trip', class: 'btn btn-primary' %>
-  </div>
+    <div class="actions">
+      <%= link_to_add_association 'Add route point', f, :destinations, class: "btn btn-primary" %>
+      <%= f.submit 'Create trip', class: 'btn btn-primary' %>
+    </div>
 <% end %>
