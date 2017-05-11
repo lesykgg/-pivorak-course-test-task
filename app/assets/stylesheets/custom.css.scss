@@ -37,6 +37,18 @@ textarea {
   text-align: center;
   font-size: 1.2em;
 }
+.bus-seat-sold{
+  display: inline-block;
+  color: white;
+  background-color: red;
+  font-weight: bold;
+  width: 20px;
+  height: 20px;
+  border: 2px solid;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 1.2em;
+}
 
 .bus-pass{
   display:inline-block;

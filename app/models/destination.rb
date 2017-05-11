@@ -1,6 +1,6 @@
 class Destination < ApplicationRecord
   belongs_to :trip
-  validates :point, presence: true
+  validates :point, :timearr, :datearr, presence: true
 
   def station_arrival_time
     timearr.strftime("%H:%M UTC")

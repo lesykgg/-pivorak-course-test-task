@@ -23,10 +23,11 @@
         <td><%= trip.route_points %></td>
         <td><%= trip.seats %></td>
         <td><%= link_to 'Show', trip %></td>
-        <td><%= link_to 'Buy ticket', "/tickets/new/?trip_id=#{trip.id}" %></td>
+
         <% if current_user.try(:admin?) %>
-        <td><%= link_to 'Edit', edit_trip_path(trip) %></td>
-        <td><%= link_to 'Destroy', trip, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+			    <td><%= link_to 'Buy ticket', "/tickets/new/?trip_id=#{trip.id}" %></td>
+	        <td><%= link_to 'Edit', edit_trip_path(trip) %></td>
+	        <td><%= link_to 'Destroy', trip, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
       </tr>
     <% end %>

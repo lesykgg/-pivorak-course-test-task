@@ -11,7 +11,16 @@ class TicketsController < ApplicationController
 		@trip = params[:trip_id].to_i
 		@points = Trip.find(params[:trip_id]).destinations.map(&:point)
 		@ticket = Ticket.new
-	end
+		@b = []
+		@a = (0..@num).to_a
+		@a.each do |d|
+			Trip.find(@trip).tickets.each do |t|
+				if t.seatnum == d
+					@b.push(d)
+				end
+			end
+			end
+		end
 
 	def create
 		@ticket = Ticket.new(tickets_params)

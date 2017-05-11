@@ -4,11 +4,11 @@ class Trip < ApplicationRecord
   has_many :tickets, dependent: :destroy
   accepts_nested_attributes_for :tickets, reject_if: :all_blank
   has_many :bookings, dependent: :destroy
+  
+  validates :seats, :timedep, presence: true
 
   def self.search(search, search2, search3)
-    a = joins(:destinations).where(destinations: { point: search })
-    b = a.where(destinations: { point: search2 })
-    c = b.where(destinations: { datearr: search3})
+    joins(:destinations).where('point = ? and point = ? and datearr = ?', search, search2, search3)
   end
 
   def route_points
