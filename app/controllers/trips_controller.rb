@@ -3,6 +3,11 @@ class TripsController < ApplicationController
 
 
   def index
+    Trip.all.each do |t|
+      if t.destinations.order(:datearr, :timearr).last.datearr < DateTime.now-1
+        t.destroy
+      end
+    end
     @trips = Trip.all
     if params[:search] && params[:search2] && params[:search3]
       @trips = Trip.search(params[:search], params[:search2], params[:search3])
