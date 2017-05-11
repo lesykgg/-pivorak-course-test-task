@@ -1,33 +1,28 @@
 class TripsController < ApplicationController
   before_action :set_trip, only: [:show, :edit, :update, :destroy]
 
-  # GET /trips
-  # GET /trips.json
+
   def index
     @trips = Trip.all
     if params[:search] && params[:search2] && params[:search3]
-    pp  @trips = Trip.search(params[:search], params[:search2], params[:search3]).order("created_at DESC").to_a
+      @trips = Trip.search(params[:search], params[:search2], params[:search3])
+                   .order('created_at DESC').uniq
     else
       @trips = Trip.all.order('created_at DESC')
     end
   end
 
-  # GET /trips/1
-  # GET /trips/1.json
+
   def show
   end
 
-  # GET /trips/new
   def new
     @trip = Trip.new
   end
 
-  # GET /trips/1/edit
   def edit
   end
 
-  # POST /trips
-  # POST /trips.json
   def create
     # render json: params
     @trip = Trip.new(trip_params)
@@ -68,12 +63,10 @@ class TripsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_trip
       @trip = Trip.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def trip_params
       params.require(:trip).permit(:timedep, :seats, destinations_attributes: [:trip_id, :point, :datearr, :timearr, :_destroy])
     end

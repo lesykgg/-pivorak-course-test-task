@@ -1,6 +1,6 @@
 <%= form_tag(trips_path, :method => "get", id: "search-form") do %>
-<%= text_field_tag :search, params[:search], placeholder: "From" %>
-<%= text_field_tag :search2, params[:search2], placeholder: "to" %>
-<%= date_field_tag :search3, params[:search3], placeholder: "Trip date" %>
-<%= submit_tag "Search" %>
+  <%= text_field_tag :search, params[:search], placeholder: "From" %>
+  <%= text_field_tag :search2, params[:search2], placeholder: "to" %>
+  <%= date_field_tag :search3, params[:search3], placeholder: "Trip date" %>
+  <%= submit_tag "Search" %>
 <% end %>

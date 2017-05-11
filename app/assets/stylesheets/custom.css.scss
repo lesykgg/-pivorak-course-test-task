@@ -25,7 +25,35 @@ textarea {
 }
 }
 
-/* хедер */
+.bus-seat{
+  display: inline-block;
+  color: white;
+  background-color: #0000a9;
+  font-weight: bold;
+  width: 20px;
+  height: 20px;
+  border: 2px solid;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 1.2em;
+}
+
+.bus-pass{
+  display:inline-block;
+  width: 15px;
+  height: 20px;
+}
+.bus-pass2{
+  width: 20px;
+  height: 20px;
+}
+.seat-container{
+  display: inline-block;
+  border: 2px solid;
+  border-radius: 5px;
+}
+
+/* header */
 
 #logo {
 	float: left;

@@ -1,0 +1,15 @@
+<div class="seat-container">
+		<div class="bus-pass2"> </div>
+		<div class="bus-pass2"> </div>
+  <% num.times do |i| %>
+    <% if i != 0 && i % 2 == 0 && i % 4 != 0 %>
+			<div class="bus-pass"> </div>
+		<% end %>
+
+		<% if i != 0 && i % 4 == 0 %>
+			 <br/>
+    <%  end %>
+
+			<a href=<%=request.original_url + "&seatnum=#{i+1}"%>><div class="bus-seat"><%= i + 1 %></div></a>
+  <% end %>
+</div>

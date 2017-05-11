@@ -1,32 +1,23 @@
-<p>
-  <strong>From:</strong>
-  <%= @trip.departure_point %>
-</p>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Station</th>
+      <th>Date</th>
+      <th>Time</th>
+    </tr>
+  </thead>
 
-<p>
-  <strong>Destination:</strong>
-  <%= @trip.ride_destination %>
-</p>
+  <tbody>
+    <% @trip.destinations.each do |dest| %>
+      <tr>
+      <td><%=dest.point %></td>
+      <td><%=dest.datearr%></td>
+      <td><%=dest.station_arrival_time%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
-<p>
-  <strong>Timedep:</strong>
-  <%= @trip.timedep %>
-</p>
-
-<p>
-  <strong>Timearr:</strong>
-  <%= @trip.ride_arrival_time %>
-</p>
-
-<p>
-  <strong>Via:</strong>
-  <%= @trip.route_points %>
-</p>
-
-<p>
-  <strong>Seats:</strong>
-  <%= @trip.seats %>
-</p>
 <% if current_user.try(:admin?) %>
 <%= link_to 'Edit', edit_trip_path(@trip) %> |
 <% end %>

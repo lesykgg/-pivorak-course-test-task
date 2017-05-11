@@ -1,20 +1,19 @@
 <div class ="nested-fields">
-<div class="field">
-      <%= f.label :point %>
-      <%= f.text_field :point %>
-    </div>
+  <div class="field">
+    <%= f.label :point %>
+    <%= f.text_field :point %>
+  </div>
 
-    <div class="field">
-      <%= f.label :datearr %>
-      <%= f.date_select :datearr %>
-    </div>
+  <div class="field">
+    <%= f.label :datearr %>
+    <%= f.date_field :datearr %>
+  </div>
 
-    <div class="field">
-      <%= f.label :timearr %>
-      <%= f.time_select :timearr %>
-    </div>
+  <div class="field">
+    <%= f.label :timearr %>
+    <%= f.time_field :timearr %>
+  </div>
 
-    <%= link_to_remove_association "Remove route point", f, class: "btn btn-primary btn-xs" %>
-
+  <%= link_to_remove_association "Remove route point", f, class: "btn btn-primary btn-xs" %>
 
 </div>
