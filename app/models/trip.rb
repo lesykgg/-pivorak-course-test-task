@@ -2,8 +2,7 @@ class Trip < ApplicationRecord
   has_many :destinations, inverse_of: :trip, dependent: :destroy
   accepts_nested_attributes_for :destinations, reject_if: :all_blank, allow_destroy: true
   has_many :tickets, dependent: :destroy
-  accepts_nested_attributes_for :tickets, reject_if: :all_blank
-  has_many :bookings, dependent: :destroy
+  accepts_nested_attributes_for :tickets, reject_if: :all_blank, allow_destroy: true
   
   validates :seats, :timedep, presence: true
 

@@ -25,6 +25,11 @@ class TripsController < ApplicationController
   end
 
   def edit
+    if @trip.tickets.any?
+      respond_to do |format|
+        format.html { redirect_to trips_url, notice: 'Cannot edit this trip: tickets was sold.' }
+      end
+    end
   end
 
   def create
@@ -59,11 +64,17 @@ class TripsController < ApplicationController
   # DELETE /trips/1
   # DELETE /trips/1.json
   def destroy
-    @trip.destroy
-    respond_to do |format|
-      format.html { redirect_to trips_url, notice: 'Trip was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    if @trip.tickets.any?
+      respond_to do |format|
+      format.html { redirect_to trips_url, notice: 'Cannot destroy this trip: tickets was sold.' }
+      end
+    else
+     @trip.destroy
+     respond_to do |format|
+        format.html {redirect_to trips_url, notice: 'Trip was successfully destroyed.'}
+        format.json {head :no_content }
+     end
+     end
   end
 
   private
