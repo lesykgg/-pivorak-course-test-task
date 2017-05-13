@@ -5,5 +5,5 @@ class Destination < ApplicationRecord
   def station_arrival_time
     timearr.strftime("%H:%M UTC")
   end
-  
+
 end

@@ -3,6 +3,6 @@ Rails.application.routes.draw do
   resources :tickets
   root 'static_pages#home'
   devise_for :users
-  get 'persons/profile'
+  get 'profile', to: 'persons#profile'
   get 'booking/seats', to: 'booking#seats'
 end

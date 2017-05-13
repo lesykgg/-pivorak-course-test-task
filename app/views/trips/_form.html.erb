@@ -12,7 +12,7 @@
     <% end %>
 
     <div class="field">
-      <%= f.label :timedep %>
+      <%= f.label :timedep, 'Date and time of departure' %>
       <%= f.datetime_field :timedep %>
     </div>
 
@@ -22,7 +22,7 @@
     </div>
 
     <%= f.fields_for :destinations do |dest| %>
-        <%= render 'destinations_fields', f: dest %>
+        <%= render 'destination_fields', f: dest %>
     <% end %>
 
     <div class="actions">

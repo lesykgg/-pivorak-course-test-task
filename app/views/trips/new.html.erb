@@ -1,9 +1,6 @@
-<% if current_user.try(:admin?) %>
-	<h1>New Trip</h1>
-
-	<%= render 'form', trip: @trip %>
-
-	<%= link_to 'Back', trips_path %>
-<% else %>
-	<strong>Acess forbidden</strong>
-<% end %>
+<h1>New Trip</h1>
+<%= render 'form', trip: @trip %>
+<small>*for the first point of the route time & date of arriving must be
+  the same as a time & date of departure
+</small>
+<%= link_to 'Back', trips_path %>

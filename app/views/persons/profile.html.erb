@@ -1,19 +1,17 @@
-<table>
-  <tr>
-  	<td>
-  	  <strong>Name:</strong>
-  	</td>
+<strong>Name:</strong><%= current_user.name %>
+<h2>Tickets:</h2>
+<% current_user.tickets.all.each do |t| %>
+    <table class="table table-bordered">
+      <tr>
+        <td>Ticket number: <%= t.id %></td>
+        <td>From: <%= t.from %></td>
+        <td>To: <%= t.to %></td>
+        <td>Date of departure: <%= t.date_departure %></td>
+        <td>Time of departure: <%= t.time_departure %></td>
+        <td>Date of arriving: <%= t.date_arrival %></td>
+        <td>Time of arriving: <%= t.time_arrival %></td>
+        <td>Seat number: <%= t.seatnum %></td>
+      </tr>
+    </table>
+<% end %>
 
-  	<td>
-  		<%= current_user.name %>
-  	</td>
-
-  </tr>
-
-  <tr>
-  	<td>
-  		<strong>Ticket list</strong>
-  	</td>
-  </tr>
-
-</table>

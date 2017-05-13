@@ -5,15 +5,18 @@
   </div>
 
   <div class="field">
-    <%= f.label :datearr %>
-    <%= f.date_field :datearr %>
+    <%= f.label :datearr, 'Date of arriving*' %>
+    <%= f.date_field :datearr, value: "%H:%M",
+                               min: 'hh:mm:ss',
+                               max: 'hh:mm:ss' %>
   </div>
 
   <div class="field">
-    <%= f.label :timearr %>
-    <%= f.time_field :timearr %>
+    <%= f.label :timearr, 'Time of arriving*' %>
+    <%= f.time_field :timearr, value: "%H:%M",
+                               min: 'hh:mm:ss',
+                               max: 'hh:mm:ss'%>
   </div>
 
   <%= link_to_remove_association "Remove route point", f, class: "btn btn-primary btn-xs" %>
-
 </div>
