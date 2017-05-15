@@ -1,13 +1,18 @@
 class Trip < ApplicationRecord
   has_many :destinations, inverse_of: :trip, dependent: :destroy
-  accepts_nested_attributes_for :destinations, reject_if: :all_blank, allow_destroy: true
   has_many :tickets, dependent: :destroy
+  has_one :first_destination, class_name: 'Destination'
+  has_one :second_destination, class_name: 'Destination'
+
+  accepts_nested_attributes_for :destinations, reject_if: :all_blank, allow_destroy: true
   accepts_nested_attributes_for :tickets, reject_if: :all_blank, allow_destroy: true
 
   validates :seats, :timedep, presence: true
 
   def self.search(search, search2, search3)
-    joins(:destinations).where('point = ? and point = ? and datearr = ?', search, search2, search3)
+    # joins(:destinations).where('point = ? and point = ? and datearr = ?', "#{search}", "#{search2}", "#{search3}")
+    joins(:first_destination, :second_destination)
+      .where('(destinations.point ILIKE ? AND second_destinations_trips.point ILIKE ? ) AND destinations.datearr = ?', "%#{search}%", "%#{search2}%", "#{search3}")
   end
 
   def route_points

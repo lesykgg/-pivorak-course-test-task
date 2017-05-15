@@ -1,5 +1,6 @@
+<% provide(:title, 'Profile') %>
 <strong>Name:</strong><%= current_user.name %>
-<h2>Tickets:</h2>
+<strong>Tickets:</strong>
 <% current_user.tickets.all.each do |t| %>
     <table class="table table-bordered">
       <tr>

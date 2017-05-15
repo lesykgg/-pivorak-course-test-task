@@ -3,7 +3,7 @@ class Destination < ApplicationRecord
   validates :point, :timearr, :datearr, presence: true
 
   def station_arrival_time
-    timearr.strftime("%H:%M UTC")
+    timearr.strftime('%H:%M')
   end
 
 end
