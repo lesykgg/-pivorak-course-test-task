@@ -41,6 +41,7 @@ class TripsController < ApplicationController
       respond_to do |format|
         format.html { redirect_to trips_url, notice: 'You have no permission to access this path.' }
       end
+
     end
   end
 
@@ -62,6 +63,7 @@ class TripsController < ApplicationController
   # PATCH/PUT /trips/1
   # PATCH/PUT /trips/1.json
   def update
+    @trip.destinations.destroy_all
     respond_to do |format|
       if @trip.update(trip_params)
         format.html { redirect_to @trip, notice: 'Trip was successfully updated.' }
